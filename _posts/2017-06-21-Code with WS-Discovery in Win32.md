@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "How to code with ws-discovery in win32"
+title: "Code with ws-discovery in win32"
 lang: en
 comments: true
-summary: "This article describes the detail ws-discovery "
+summary: "This article describes the detail about ws-discovery "
 tags: [ws-discovery,socket,udp]
 ---
 
@@ -15,7 +15,6 @@ UDP ports 139, 445, 1124, 3702 TCP ports 139, 445, 3702, 49179, 5357,5358
 The primary mode of discovery is a client searching for one or more target services. To find a target service by the type of the target service, a scope in which the target service resides, or both, a client sends a probe message to a multicast group; target services that match the probe send a response directly to the client.
 
 This blog is going to talk about the using ws-discovery to find device.
-
 ##DiscoveryDevice
 Normally, you send data to client and then receive from client to match your device. But may be there is multi-card in your PC. To consider this situation, you should send data muli-times. And you will send with different net card IP, message id and local port. 
 
@@ -66,8 +65,6 @@ Normally, you send data to client and then receive from client to match your dev
     		i++;
     	}
     }
-
-
 ##SendXMLData
 This function is design to send data to client, before sending, you should create a UDP socket and join to IP multicast address group. Notice that the local port is random, but the dest port is **3702** and the IP multicast address must be **239.255.255.250**.
 	
@@ -143,8 +140,6 @@ This function is design to send data to client, before sending, you should creat
     	closesocket(sSearchSocket);
     	return TRUE;
     }
-
-
 ##ListenServer
 This function is design to receive data from client, before receiving, you should create a UDP socket and join to IP multicast address group. The IP multicast address must be **239.255.255.250**, and you can receive data from any ip address.
 
@@ -241,7 +236,6 @@ This function is design to receive data from client, before receiving, you shoul
     
     	return TRUE;
     }
-
 ## Export log file
 This function is design to export log, and it is unicode. Before using, you should creat a file named "ExportLog.txt" in the path "c:\Dump",  and you can use it the same way as using OutputDebugString.
 
