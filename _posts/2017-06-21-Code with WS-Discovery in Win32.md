@@ -119,12 +119,12 @@ This function is design to send data to client, before sending, you should creat
     	DestinationAddr.sin_addr.s_addr = inet_addr("239.255.255.250");
     	DestinationAddr.sin_port = htons(3702);
     
-    	char szXml[] = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:wsa=\"http://schemas.xmlsoap.org/ws/2004/08/addressing\" xmlns:hpd=\"http://www.hp.com/schemas/imaging/con/discovery/2006/09/19\" xmlns:wsd=\"http://schemas.xmlsoap.org/ws/2005/04/discovery\"><soap:Header><wsa:To>urn:schemas-xmlsoap-org:ws:2005:04:discovery</wsa:To><wsa:Action>http://schemas.xmlsoap.org/ws/2005/04/discovery/Probe</wsa:Action><wsa:MessageID>urn:uuid:BCDFA477-F180-4ABA-9766-76F0B42B95F6</wsa:MessageID></soap:Header><soap:Body><wsd:Probe><wsd:Types>wsdp:Device wscn:ScanDeviceType</wsd:Types></wsd:Probe></soap:Body></soap:Envelope>";
+    	char szXml[] = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:wsa=\"http://schemas.xmlsoap.org/ws/2004/08/addressing\" xmlns:wsd=\"http://schemas.xmlsoap.org/ws/2005/04/discovery\"><soap:Header><wsa:To>urn:schemas-xmlsoap-org:ws:2005:04:discovery</wsa:To><wsa:Action>http://schemas.xmlsoap.org/ws/2005/04/discovery/Probe</wsa:Action><wsa:MessageID>urn:uuid:BCDFA477-F180-4ABA-9766-76F0B42B95F6</wsa:MessageID></soap:Header><soap:Body><wsd:Probe><wsd:Types>wsdp:Device wscn:ScanDeviceType</wsd:Types></wsd:Probe></soap:Body></soap:Envelope>";
     	int nReturn = sizeof(szXml)+1;
     
     	//replace uuid
     	int nUUIDSize = strlen(szPcUuid);
-    	memcpy(szXml + 436, szPcUuid, nUUIDSize);
+    	memcpy(szXml + 365, szPcUuid, nUUIDSize);
     
     	nResult = sendto(sSearchSocket, szXml, nReturn, 0, (struct sockaddr*)&DestinationAddr, sizeof(DestinationAddr));
     
